@@ -9,7 +9,13 @@ module Filegen
     end
 
     def run
-      generator.compile(options.source,options.destination)
+      begin
+        generator.compile(options.source,options.destination)
+      rescue Exception => e
+        puts e.message
+        exit 1
+      end
+
       exit 0
     end
   end
