@@ -1,0 +1,2 @@
+default: -t @wip:3
+all: -t ~@wip
