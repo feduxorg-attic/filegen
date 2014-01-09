@@ -7,7 +7,7 @@ module Filegen
       $stdin, $stdout, $stderr, @kernel = stdin, stdout, stderr, kernel
 
       @options = Options.new(argv)
-      @generator = ErbGenerator.new(Env.new.my_binding)
+      @generator = ErbGenerator.new(ProcessEnvironment.new.instance_binding)
     end
 
     def execute!
