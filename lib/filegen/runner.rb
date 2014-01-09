@@ -3,20 +3,23 @@ module Filegen
   class Runner
     attr_reader :options, :generator
 
-    def initialize(argv)
+    def initialize(argv, stdin=$stdin, stdout=$stdout, stderr=$stderr, kernel=Kernel)
+      $stdin, $stdout, $stderr, @kernel = stdin, stdout, stderr, kernel
+
       @options = Options.new(argv)
       @generator = ErbGenerator.new(Env.new.my_binding)
     end
 
-    def run
+    def execute!
       begin
         generator.compile(options.source,options.destination)
+        exitstatus = 0
       rescue Exception => e
-        puts e.message
-        exit 1
+        $stderr.puts e.message
+        exitstatus = 1
       end
 
-      exit 0
+      @kernel.exit(exitstatus)
     end
   end
 end
