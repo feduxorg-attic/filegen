@@ -10,15 +10,27 @@ module Filegen
     def source
       return File.read(template) if valid_template?
 
-      fail "File does not exist or is not a erb file!"
+      fail "File does not exist" unless exists?
+      fail "File is not a valid erb template: file ending erb" unless erb_template?
+      fail "Unkonwn error"
     end
 
     def destination
       $stdout
     end
 
+    private
+
+    def exists?
+      File.exists?(template)
+    end
+
+    def erb_template?
+      /.erb$/ === File.basename(template)
+    end
+
     def valid_template?
-      File.exists?(template) && /.erb$/ === File.basename(template)
+      exists? && erb_template?
     end
   end
 end
