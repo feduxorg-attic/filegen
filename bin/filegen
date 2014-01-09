@@ -3,4 +3,4 @@
 
 require 'filegen'
 
-Filegen::Runner.new(ARGV).run
+Filegen::Runner.new(ARGV).execute!
