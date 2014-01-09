@@ -8,11 +8,9 @@ module Filegen
     end
 
     def source
-      return File.read(template) if valid_template?
+      validate_source
 
-      fail "File \"#{template}\" does not exist" unless exists?
-      fail "File \"#{template}\" is not a valid erb template: file ending erb" unless erb_template?
-      fail "Unkonwn error"
+      File.new(template)
     end
 
     def destination
@@ -21,16 +19,17 @@ module Filegen
 
     private
 
+    def validate_source
+      fail "File \"#{template}\" does not exist" unless exists?
+      fail "File \"#{template}\" is not a valid erb template: file ending erb" unless erb_template?
+    end
+
     def exists?
       File.exists?(template)
     end
 
     def erb_template?
       /.erb$/ === File.basename(template)
-    end
-
-    def valid_template?
-      exists? && erb_template?
     end
   end
 end

@@ -7,12 +7,12 @@ module Filegen
       $stdin, $stdout, $stderr, @kernel = stdin, stdout, stderr, kernel
 
       @options = Options.new(argv)
-      @generator = ErbGenerator.new(ProcessEnvironment.new.instance_binding)
+      @generator = ErbGenerator.new(Data.new)
     end
 
     def execute!
       begin
-        generator.compile(options.source,options.destination)
+        generator.compile(options.source, options.destination)
         exitstatus = 0
       rescue RuntimeError => e
         $stderr.puts e.message

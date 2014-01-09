@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Filegen
-  class ProcessEnvironment
+  class Data
 
     def initialize
       define_methods_for_env_vars

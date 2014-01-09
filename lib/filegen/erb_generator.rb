@@ -1,15 +1,20 @@
 # encoding: utf-8
 module Filegen
   class ErbGenerator
-    attr_reader :template_binding
 
-    def initialize(template_binding)
-      @template_binding = template_binding
+    private
+
+    attr_reader :data
+
+    public
+
+    def initialize(data)
+      @data = data
     end
 
-    def compile(source,destination)
-      destination.puts ERB.new(source).result(template_binding)
+    def compile(source, destination)
+      erb = ERB.new(source.read)
+      destination.puts erb.result(data.instance_binding)
     end
   end
-
 end
