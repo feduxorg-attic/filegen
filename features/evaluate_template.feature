@@ -36,7 +36,6 @@ Feature: Evaluate Template
     File "template1.erb" does not exist
     """
 
-    @wip
   Scenario: Non erb file
     Given an empty file named "template1.abc"
     When I run `filegen template1.abc`
