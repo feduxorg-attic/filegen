@@ -15,7 +15,6 @@ Feature: Evaluate Template
     Hello World!
     """
 
-    @wip
   Scenario: Uses env variables in template
     Given a file named "template.erb" with:
     """
@@ -24,9 +23,24 @@ Feature: Evaluate Template
     And I set the environment variables to:
       | variable | value |
       | NAME     | Karl  |
-    #Then then environment contains the following variables
     When I successfully run `filegen template.erb`
     Then the output should contain:
     """
     Hello Karl
+    """
+
+  Scenario: Non existing file
+    When I run `filegen template1.erb`
+    Then the stderr should contain:
+    """
+    File "template1.erb" does not exist
+    """
+
+    @wip
+  Scenario: Non erb file
+    Given an empty file named "template1.abc"
+    When I run `filegen template1.abc`
+    Then the stderr should contain:
+    """
+    File "template1.abc" is not a valid erb template: file ending erb
     """

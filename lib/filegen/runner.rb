@@ -14,7 +14,7 @@ module Filegen
       begin
         generator.compile(options.source,options.destination)
         exitstatus = 0
-      rescue Exception => e
+      rescue RuntimeError => e
         $stderr.puts e.message
         exitstatus = 1
       end
