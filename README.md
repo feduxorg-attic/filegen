@@ -1,6 +1,8 @@
 # Filegen
 
-TODO: Write a gem description
+Have you ever felt the need to generate files based on environment variables or
+some other data sources? If your answer is yes, then `filegen` can be quite
+helpful for you. If your answer is no, than sorry Ma'am, you can browse on.
 
 ## Installation
 
@@ -16,9 +18,35 @@ Or install it yourself as:
 
     $ gem install filegen
 
+This gem ships with an executable called `filegen`. It makes the power of ERB
+available on the commandline.
+
 ## Usage
 
-TODO: Write usage instructions here
+### Generate a file
+
+Please make sure you have an ERB-template available. It needs to end with `.erb`!
+
+
+*Source*
+
+```
+Hello my name is: <%= name %>
+```
+
+```bash
+NAME=Karl filegen template.erb > file
+```
+
+*Result*
+
+```
+Hello my name is: Karl
+```
+
+## Future
+
+* Add support for other backends via `moneta` (https://github.com/minad/moneta)
 
 ## Contributing
 
