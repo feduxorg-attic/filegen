@@ -26,7 +26,7 @@ module Filegen
       result = nil
 
       data_sources.each do |s|
-        (result = s[variable] ) && (return result)
+        (result = s.fetch(variable) ) && (return result)
       end
 
       ''
