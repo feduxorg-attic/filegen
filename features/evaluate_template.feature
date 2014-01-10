@@ -18,7 +18,7 @@ Feature: Evaluate Template
   Scenario: Uses env variables in template
     Given a file named "template.erb" with:
     """
-    Hello <%= name %>!
+    Hello <%= lookup('NAME') %>!
     """
     And I set the environment variables to:
       | variable | value |
