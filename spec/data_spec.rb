@@ -19,5 +19,34 @@ describe Filegen::Data do
         expect(data.lookup('MY_NAME')).to eq('Karl')
       end
     end
+
+    it 'let you access yaml data' do
+      yaml_file = create_file('yaml_file.yaml', <<-EOF.strip_heredoc
+        ---
+        yaml_name: Karl
+      EOF
+                 )
+
+      data = Filegen::Data.new(yaml_file: yaml_file)
+      expect(data.lookup('yaml_name')).to eq('Karl')
+    end
+
+    it 'takes env var first' do
+      yaml_file = create_file('yaml_file.yaml', <<-EOF.strip_heredoc
+        ---
+        MY_NAME: Egon
+      EOF
+                 )
+
+      in_environment 'MY_NAME' => 'Karl' do
+      data = Filegen::Data.new(yaml_file: yaml_file)
+        expect(data.lookup('MY_NAME')).to eq('Karl')
+      end
+
+      in_environment 'NO' => 'NO' do
+        data = Filegen::Data.new(yaml_file: yaml_file)
+        expect(data.lookup('MY_NAME')).to eq('Egon')
+      end
+    end
   end
 end

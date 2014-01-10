@@ -32,4 +32,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'tmrb'
+  spec.add_development_dependency 'yard'
+  spec.add_development_dependency 'github-markup'
+  spec.add_development_dependency 'redcarpet'
+  spec.add_development_dependency 'erubis'
+  spec.add_development_dependency 'versionomy'
 end

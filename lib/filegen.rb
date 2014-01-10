@@ -1,4 +1,5 @@
 require 'erb'
+require 'moneta'
 
 require 'filegen/version'
 require 'filegen/runner'
