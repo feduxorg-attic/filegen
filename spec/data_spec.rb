@@ -1,52 +1,58 @@
-# encoding: utf-8
+# ENCODING: UTF-8
 require 'spec_helper' 
 
 describe Filegen::Data do
   context '#instance_binding' do
-    it 'let you access environment variables' do
-      in_environment 'MY_NAME' => 'Karl' do
-        data = Filegen::Data.new
-        result = eval('lookup("MY_NAME")', data.instance_binding)
-        expect(result).to eq('Karl')
-      end
+    it 'let you variables' do
+      source = double('DataSource')
+      expect(source).to receive(:[]).with('MY_NAME').and_return('Karl')
+
+      data = Filegen::Data.new(source)
+      result = eval('lookup("MY_NAME")', data.instance_binding)
+      expect(result).to eq('Karl')
     end
   end
 
   context '#lookup' do
-    it 'let you access environment variables' do
-      in_environment 'MY_NAME' => 'Karl' do
-        data = Filegen::Data.new
-        expect(data.lookup('MY_NAME')).to eq('Karl')
-      end
+    it 'provides access to variables' do
+      source = double('DataSource')
+      expect(source).to receive(:[]).with('MY_NAME').and_return('Karl')
+
+      data = Filegen::Data.new(source)
+      expect(data.lookup('MY_NAME')).to eq('Karl')
     end
 
-    it 'let you access yaml data' do
-      yaml_file = create_file('yaml_file.yaml', <<-EOF.strip_heredoc
-        ---
-        yaml_name: Karl
-      EOF
-                 )
+    it 'supports multiple data sources: first has match' do
+      source1 = double('DataSource1')
+      expect(source1).to receive(:[]).with('MY_NAME').and_return('Egon')
 
-      data = Filegen::Data.new(yaml_file: yaml_file)
-      expect(data.lookup('yaml_name')).to eq('Karl')
+      source2 = double('DataSource2')
+      expect(source2).not_to receive(:[])
+
+      data = Filegen::Data.new([source1, source2])
+      expect(data.lookup('MY_NAME')).to eq('Egon')
     end
 
-    it 'takes env var first' do
-      yaml_file = create_file('yaml_file.yaml', <<-EOF.strip_heredoc
-        ---
-        MY_NAME: Egon
-      EOF
-                 )
+    it 'supports multiple data sources: last has match' do
+      source1 = double('DataSource1')
+      expect(source1).to receive(:[]).with('MY_NAME').and_return(nil)
 
-      in_environment 'MY_NAME' => 'Karl' do
-      data = Filegen::Data.new(yaml_file: yaml_file)
-        expect(data.lookup('MY_NAME')).to eq('Karl')
-      end
+      source2 = double('DataSource2')
+      expect(source2).to receive(:[]).with('MY_NAME').and_return('Egon')
 
-      in_environment 'NO' => 'NO' do
-        data = Filegen::Data.new(yaml_file: yaml_file)
-        expect(data.lookup('MY_NAME')).to eq('Egon')
-      end
+      data = Filegen::Data.new([source1, source2])
+      expect(data.lookup('MY_NAME')).to eq('Egon')
+    end
+
+    it 'returns "" if none matches' do
+      source1 = double('DataSource1')
+      expect(source1).to receive(:[]).with('MY_NAME').and_return(nil)
+
+      source2 = double('DataSource2')
+      expect(source2).to receive(:[]).with('MY_NAME').and_return(nil)
+
+      data = Filegen::Data.new([source1, source2])
+      expect(data.lookup('MY_NAME')).to eq('')
     end
   end
 end
