@@ -2,8 +2,8 @@
 module Filegen
   class Data
 
-    def initialize
-      define_methods_for_env_vars
+    def lookup(variable)
+      env_var(variable)
     end
 
     def instance_binding
@@ -12,16 +12,8 @@ module Filegen
 
     private
 
-    def define_methods_for_env_vars
-      ENV.to_hash.each do |name,value|
-        self.class.send(:define_method, sanitize_method_name(name)) do
-          value
-        end
-      end
-    end
-
-    def sanitize_method_name(name)
-      name.downcase.gsub(/[^a-z0-9]/, '_').to_sym
+    def env_var(var)
+      ENV[var]
     end
   end
 end
