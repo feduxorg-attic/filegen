@@ -35,15 +35,15 @@ module Filegen
       parser.on('-y', '--yaml_file FILE', 'YAML-file to look for variables') { |f| params.yaml_file = f }
       #parser.on('-o', '--order env,yaml', Array,  'Order for variable lookup') { |l| params.order = l }
 
-      #parser.on_tail('-h', '--help', 'Show this message') do
-      #  $stderr.puts opts
-      #  exit
-      #end
+      parser.on_tail('-h', '--help', 'Show this message') do
+        $stderr.puts opts
+        exit
+      end
 
-      #parser.on_tail('-v', '--version', 'Show version') do
-      #  $stderr.puts ::Version.join('.')
-      #  exit
-      #end
+      parser.on_tail('-v', '--version', 'Show version') do
+        $stderr.puts Filegen::VERSION
+        exit
+      end
 
       params.template = parser.parse(argv).first
 

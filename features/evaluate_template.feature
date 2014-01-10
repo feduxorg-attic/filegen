@@ -44,7 +44,6 @@ Feature: Evaluate Template
     File "template1.abc" is not a valid erb template: file ending erb
     """
 
-    @wip
   Scenario: YAML file as input (short)
     Given a file named "template.erb" with:
     """
@@ -61,7 +60,6 @@ Feature: Evaluate Template
     Hello Karl!
     """
 
-    @wip
   Scenario: YAML file as input (long)
     Given a file named "template.erb" with:
     """
