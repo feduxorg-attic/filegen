@@ -75,3 +75,41 @@ Feature: Evaluate Template
     """
     Hello Karl!
     """
+  
+  Scenario: Define order of data sources for lookup (env first)
+    Given a file named "template.erb" with:
+    """
+    Hello <%= lookup('NAME') %>!
+    """
+    And a file named "input.yaml" with:
+    """
+    ---
+    NAME: Karl
+    """
+    And I set the environment variables to:
+      | variable | value |
+      | NAME     | Egon  |
+    When I run `filegen --yaml_file input.yaml --order env,yaml template.erb`
+    Then the output should contain:
+    """
+    Hello Egon!
+    """
+
+  Scenario: Define order of data sources for lookup (yaml first)
+    Given a file named "template.erb" with:
+    """
+    Hello <%= lookup('NAME') %>!
+    """
+    And a file named "input.yaml" with:
+    """
+    ---
+    NAME: Karl
+    """
+    And I set the environment variables to:
+      | variable | value |
+      | NAME     | Egon  |
+    When I run `filegen --yaml_file input.yaml --order yaml,env template.erb`
+    Then the output should contain:
+    """
+    Hello Karl!
+    """

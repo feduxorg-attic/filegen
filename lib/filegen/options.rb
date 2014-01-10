@@ -32,11 +32,13 @@ module Filegen
       params = OpenStruct.new
       parser = OptionParser.new 
 
+      params.order = %w{env yaml}
+
       parser.on('-y', '--yaml_file FILE', 'YAML-file to look for variables') { |f| params.yaml_file = f }
-      #parser.on('-o', '--order env,yaml', Array,  'Order for variable lookup') { |l| params.order = l }
+      parser.on('-o', '--order a,b', Array,  'Order for variable lookup: yaml, env (default: env, yaml)') { |l| params.order = l }
 
       parser.on_tail('-h', '--help', 'Show this message') do
-        $stderr.puts opts
+        $stderr.puts parser
         exit
       end
 

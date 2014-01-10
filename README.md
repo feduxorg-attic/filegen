@@ -35,9 +35,17 @@ the `lookup`-method.
 lookup(<variable>)
 ```
 
-The order of lookup is: 1st environment variable and 2nd yaml file. If you want
+The default order of lookup is: 1st environment variable and 2nd yaml file. If you want
 to write the output to a file you need to redirect stdout with `>`. Otherwise
 it will output the content on `$stdout`.
+
+The order can be changed by using:
+```
+--order env,yaml
+--order yaml,env
+```
+
+A short cut for `--order` is `-o`.
 
 ### Generate a file based on Environment Variables
 
