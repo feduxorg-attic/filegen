@@ -44,7 +44,8 @@ Feature: Evaluate Template
     File "template1.abc" is not a valid erb template: file ending erb
     """
 
-  Scenario: YAML file as input
+    @wip
+  Scenario: YAML file as input (short)
     Given a file named "template.erb" with:
     """
     Hello <%= lookup('name') %>!
@@ -55,6 +56,23 @@ Feature: Evaluate Template
     name: Karl
     """
     When I run `filegen -y input.yaml template.erb`
+    Then the output should contain:
+    """
+    Hello Karl!
+    """
+
+    @wip
+  Scenario: YAML file as input (long)
+    Given a file named "template.erb" with:
+    """
+    Hello <%= lookup('name') %>!
+    """
+    And a file named "input.yaml" with:
+    """
+    ---
+    name: Karl
+    """
+    When I run `filegen --yaml_file input.yaml template.erb`
     Then the output should contain:
     """
     Hello Karl!
