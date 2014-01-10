@@ -1,3 +1,4 @@
+-o doc/yard
 --verbose
 -
 LICENSE.md
