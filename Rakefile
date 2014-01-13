@@ -32,6 +32,10 @@ def pkg_directory
   File.join(root_directory, 'pkg')
 end
 
+def gem_directory
+  File.join(root_directory, 'vendor', 'cache')
+end
+
 task :default => 'gem:build'
 
 file gem_file => 'gem:build'
@@ -43,7 +47,8 @@ end
 namespace :gem do
   desc 'build tar file'
   task :package => [gem_file, tmp_directory] do
-    FileUtils.mv File.join(pkg_directory,"#{software}-#{version}.gem"), tmp_directory 
+    FileUtils.mv File.join(pkg_directory, "#{software}-#{version}.gem"), tmp_directory 
+    FileUtils.mv File.join(gem_directory, "moneta-0.7.20.gem"), tmp_directory 
 
     Dir.chdir('tmp') do
       sh "tar -czf #{tar_file} #{File.basename tmp_directory}"
