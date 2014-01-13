@@ -1,6 +1,6 @@
 module Filegen
   module Exceptions
     # raised if order arguments are invalid
-    class InvalidOrderArgument < Exception; end
+    class InvalidDataSources < Exception; end
   end
 end
