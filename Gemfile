@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'aruba', '>= 0.5.4'
+  gem 'aruba', git: 'https://github.com/cucumber/aruba.git'
   gem 'cucumber'
   gem 'fuubar'
   gem 'rspec'
