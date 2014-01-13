@@ -1,5 +1,6 @@
 # encoding: utf-8
 module Filegen
+  # Commandline parser
   class Options
 
     private
@@ -8,20 +9,36 @@ module Filegen
 
     public
 
+    # Create commandline parser
+    #
+    # @param [Array] argv
+    #   The array which contains the commandline arguments
     def initialize(argv)
       @params = parse_options(argv)
     end
 
+    # Source template
+    #
+    # @return [File]
+    #   Returns a file handle for the template
     def source
       validate_source
 
       File.new(params.template)
     end
 
+    # Destination for output
+    #
+    # @return [IO]
+    #   Returns a file handle for the output
     def destination
       $stdout
     end
 
+    # The data sources which can be used
+    # 
+    # @return [Array]
+    #   An array of data sources which can be used
     def data_sources
       DataSourceBuilder.new(params).sources
     end

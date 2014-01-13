@@ -1,4 +1,6 @@
+# encoding: utf-8
 module Filegen
+  # Build data sources
   class DataSourceBuilder
 
     private
@@ -7,8 +9,14 @@ module Filegen
 
     public
 
+    # @!attribute [r] sources
+    #   Return the sources generated
     attr_reader :sources
 
+    # Create the data source builder
+    #
+    # @param [OpenStruct] params
+    #   the params instance which contains all parameter of the commandline utility
     def initialize(params)
       @params = params
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'erb'
 require 'moneta'
 require 'optparse'
@@ -14,4 +15,5 @@ require 'filegen/data_sources/environment'
 require 'filegen/data_sources/yaml'
 require 'filegen/exceptions'
 
+# Main class
 module Filegen; end
