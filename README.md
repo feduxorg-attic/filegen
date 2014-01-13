@@ -1,6 +1,7 @@
 # Filegen
 
 [![Build Status](https://travis-ci.org/dg-vrnetze/filegen.png?branch=master)](https://travis-ci.org/dg-vrnetze/filegen)
+[![Code Climate](https://codeclimate.com/github/dg-vrnetze/filegen.png)](https://codeclimate.com/github/dg-vrnetze/filegen)
 
 Have you ever felt the need to generate files based on environment variables or
 yaml files? If your answer is yes, then `filegen` can be quite helpful for
