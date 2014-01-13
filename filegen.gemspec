@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'redcarpet'
   spec.add_development_dependency 'erubis'
   spec.add_development_dependency 'versionomy'
+  spec.add_development_dependency 'rubocop'
 end
