@@ -33,7 +33,6 @@ module Filegen
       parser = OptionParser.new 
 
       params.data_sources = [:env]
-
       params.data_source_builders = {}
       params.data_source_builders[:env]  = DataSources::Environment.new
 

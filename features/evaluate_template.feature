@@ -113,3 +113,22 @@ Feature: Evaluate Template
     """
     Hello Karl!
     """
+
+  Scenario: Leaving out a data source
+    Given a file named "template.erb" with:
+    """
+    Hello <%= lookup('NAME') %>!
+    """
+    And a file named "input.yaml" with:
+    """
+    ---
+    NAME: Karl
+    """
+    And I set the environment variables to:
+      | variable | value |
+      | NAME     | Egon  |
+    When I run `filegen --yaml-file input.yaml --data-sources yaml template.erb`
+    Then the output should contain:
+    """
+    Hello Karl!
+    """
