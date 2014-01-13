@@ -1,5 +1,7 @@
 # Filegen
 
+[![Build Status](https://travis-ci.org/dg-vrnetze/filegen.png?branch=master)](https://travis-ci.org/dg-vrnetze/filegen)
+
 Have you ever felt the need to generate files based on environment variables or
 yaml files? If your answer is yes, then `filegen` can be quite helpful for
 you. If your answer is no, than sorry Ma'am, this gem is not for you.
