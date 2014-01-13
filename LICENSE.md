@@ -1,4 +1,4 @@
-Copyright (c) 2014 Dennis Günnewig
+Copyright (c) 2014 Dennis Günnewig, VR Netze GmbH
 
 MIT License
 

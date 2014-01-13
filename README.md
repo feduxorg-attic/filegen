@@ -27,25 +27,41 @@ available on the commandline.
 
 Please make sure you have an ERB-template available. It needs to end with
 `.erb`! Place in anywhere you like. It's important that the name of variable in
-the template matches the name of environment variable or yaml-key. The lookup
-is case-sensitive. If you want to get access to the variable, you need to use
-the `lookup`-method.
+the template matches the name of environment variable or yaml-key: wording,
+case. The lookup is case-sensitive. If you want to get access to the variable,
+you need to use the `lookup`-method.
 
 ```
 lookup(<variable>)
 ```
 
-The default order of lookup is: 1st environment variable and 2nd yaml file. If you want
-to write the output to a file you need to redirect stdout with `>`. Otherwise
-it will output the content on `$stdout`.
+If you want to write the output to a file you need
+to redirect stdout with `>`. Otherwise it will output the content on `$stdout`.
 
-The order can be changed by using:
+### Variable lookup
+
+The default order of data sources to lookup a variable,  is: 1st environment
+variable and 2nd yaml file. The yaml file needs be given as command line argument
+see below at [Generate a file based on YAML file](#yaml).
+
+The order of data sources can be changed by using:
+
 ```
---order env,yaml
---order yaml,env
+--data-sources env,yaml
+--data-sources yaml,env
 ```
 
-A short cut for `--order` is `-o`.
+A short cut for `--data-sources` is `-d`. This option can also be used to ommit
+a data source. But it makes sense only for the enviroment data source today,
+because the yaml data source is only added if a yaml file name is given on the
+commandline
+
+```
+--data-sources yaml
+```
+
+
+
 
 ### Generate a file based on Environment Variables
 
@@ -63,11 +79,12 @@ NAME=Karl filegen template.erb > file
 
 And get the following result.
 
-```
+```text
 Hello my name is: Karl
 ```
 
 ### Generate a file based on YAML file
+<a id="yaml"></a>
 
 The content of `template.erb`:
 
@@ -89,18 +106,19 @@ After that you can use it with filegen.
 filegen -y names.yaml template.erb > file
 
 #long format
-filegen --yaml_file names.yaml template.erb > file
+filegen --yaml-file names.yaml template.erb > file
 ```
 
 And get the following result. 
 
-```
+```text
 Hello my name is: Karl
 ```
 
 ## Future
 
-* Provide an option to set the order of lookup
+* Maybe I will add additional data sources. Please see the
+  [Moneta](https://github.com/minad/moneta)-gem for possible candidates.
 
 ## Contributing
 
