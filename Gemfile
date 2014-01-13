@@ -4,4 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'aruba', git: 'https://github.com/cucumber/aruba.git', group: :test
-gem 'moneta', git: 'https://github.com/dg-vrnetze/moneta.git', branch: 'feature/environment'

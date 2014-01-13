@@ -6,7 +6,10 @@ module Filegen
       def_delegator :@source, :fetch, :fetch
 
       def initialize
-        @source = Moneta.new(:Environment)
+        @source = Moneta.build do 
+          use :Transformer, :key => :to_s, :value => []
+          adapter :Memory, backend: ENV
+        end
       end
     end
   end
