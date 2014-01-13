@@ -119,6 +119,39 @@ And get the following result.
 Hello my name is: Karl
 ```
 
+## Use Cases
+
+### RPM packaging
+
+Say you would like to package a ruby-based application for a rpm-based
+distribution. You can build a rpm package for each gem it depends on or build
+one rpm for the whole application containing all needed gems. After using the
+first approach at first I switched to the second one at last: No need to care
+about different version of one rubygem as dependency of different applications.
+
+To make this possible I decided to use a small wrapper which sets all
+neccessary paths: `GEM_PATH`, `GEM_ROOT` and `GEM_HOME`. After that it executes
+the ruby application. Because every application resists below a different path,
+I needed to generate a different wrapper for each application. For this I use
+this small template:
+
+```erb
+#!/usr/bin/env bash
+
+export GEM_ROOT='<%= lookup('SOFTWARE_LIB') %>'
+export GEM_PATH='<%= lookup('SOFTWARE_LIB') %>'
+export GEM_HOME='<%= lookup('SOFTWARE_LIB') %>'
+
+exec <%= lookup('SOFTWARE_BINARY') %> $*
+```
+
+The wrapper is then generated within the rpm spec:
+
+```
+SOFTWARE_BINARY=<path to rubygems bin> SOFTWARE_LIB=<library_path> filegen gem.erb > <wrapper>
+chmod +x <wrapper>
+```
+
 ## Future
 
 * Maybe I will add additional data sources. Please see the
