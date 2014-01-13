@@ -1,6 +1,4 @@
-# encoding: utf-8
-# Main module
+#main Filegen
 module Filegen
-  # Version
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
 end
