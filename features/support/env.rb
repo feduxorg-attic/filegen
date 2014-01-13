@@ -1,7 +1,7 @@
 # encoding: utf-8
 $LOAD_PATH.unshift File.expand_path('../../../lib', __FILE__)
 
-unless ENV['TRAVIS_CI']
+unless ENV['CI'] == 'true'
   require 'debugger'
   require 'pry'
 end

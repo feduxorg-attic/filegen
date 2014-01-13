@@ -1,5 +1,5 @@
 # encoding: utf-8
-unless ENV['TRAVIS_CI']
+unless ENV['CI'] == 'true'
   require 'debugger'
   require 'pry'
 end
