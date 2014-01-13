@@ -70,7 +70,7 @@ Feature: Evaluate Template
     ---
     name: Karl
     """
-    When I run `filegen --yaml_file input.yaml template.erb`
+    When I run `filegen --yaml-file input.yaml template.erb`
     Then the output should contain:
     """
     Hello Karl!
@@ -89,7 +89,7 @@ Feature: Evaluate Template
     And I set the environment variables to:
       | variable | value |
       | NAME     | Egon  |
-    When I run `filegen --yaml_file input.yaml --order env,yaml template.erb`
+    When I run `filegen --yaml-file input.yaml --data-sources env,yaml template.erb`
     Then the output should contain:
     """
     Hello Egon!
@@ -108,7 +108,7 @@ Feature: Evaluate Template
     And I set the environment variables to:
       | variable | value |
       | NAME     | Egon  |
-    When I run `filegen --yaml_file input.yaml --order yaml,env template.erb`
+    When I run `filegen --yaml-file input.yaml --data-sources yaml,env template.erb`
     Then the output should contain:
     """
     Hello Karl!

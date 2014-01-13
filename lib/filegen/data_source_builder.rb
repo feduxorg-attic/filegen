@@ -12,38 +12,31 @@ module Filegen
     def initialize(params)
       @params = params
 
+      validate_data_sources
+
       @sources = []
-      order_arguments.each do |o|
-        @sources << known_sources[o]
+      chosen_data_sources.each do |o|
+        @sources << known_data_source_builders[o]
       end
     end
 
     private
 
-    def known_sources
-      sources = {}
-      sources[:env]  = DataSources::Environment.new
-      sources[:yaml] = DataSources::Yaml.new(params.yaml_file)
-
-      sources
+    def chosen_data_sources
+      params.data_sources
     end
 
-    def order_arguments
-      validate_order_arguments
-      prepared_order_arguments
+    def known_data_source_builders
+      params.data_source_builders
     end
 
-    def prepared_order_arguments
-      params.order.map(&:to_sym)
+    def allowed_data_sources
+      known_data_source_builders.keys
     end
 
-    def allowed_order_arguments
-      known_sources.keys
-    end
-
-    def validate_order_arguments
-      invalid_arguments = prepared_order_arguments - allowed_order_arguments
-      fail Exceptions::InvalidOrderArgument, "Unknown order argument(s) \"#{invalid_arguments.join(', ')}\" found." unless invalid_arguments.empty?
+    def validate_data_sources
+      invalid_data_sources = chosen_data_sources - allowed_data_sources
+      fail Exceptions::InvalidOrderArgument, "Unknown data source#{invalid_data_sources.size > 1 ? 's' : ''} \"#{invalid_data_sources.join(', ')}\" found." unless invalid_data_sources.empty?
     end
   end
 end
