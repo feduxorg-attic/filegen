@@ -1,3 +1,5 @@
 # encoding: utf-8
-require 'debugger'
-require 'pry'
+unless ENV['TRAVIS_CI']
+  require 'debugger'
+  require 'pry'
+end

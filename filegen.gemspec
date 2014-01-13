@@ -19,25 +19,4 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'moneta'
-
-  spec.add_development_dependency 'awesome_print'
-  spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'cucumber'
-  spec.add_development_dependency 'debugger'
-  spec.add_development_dependency 'debugger-completion'
-  spec.add_development_dependency 'fedux_org-stdlib'
-  spec.add_development_dependency 'fuubar'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'pry-debugger'
-  spec.add_development_dependency 'pry-doc'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'tmrb'
-  spec.add_development_dependency 'yard'
-  spec.add_development_dependency 'github-markup'
-  spec.add_development_dependency 'redcarpet'
-  spec.add_development_dependency 'erubis'
-  spec.add_development_dependency 'versionomy'
-  spec.add_development_dependency 'rubocop'
 end

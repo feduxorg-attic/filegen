@@ -1,7 +1,10 @@
 # encoding: utf-8
 $LOAD_PATH.unshift File.expand_path('../../../lib', __FILE__)
-require 'debugger'
-require 'pry'
+
+unless ENV['TRAVIS_CI']
+  require 'debugger'
+  require 'pry'
+end
 
 require 'simplecov'
 SimpleCov.command_name 'cucumber'

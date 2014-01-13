@@ -51,3 +51,10 @@ namespace :gem do
   end
 end
 
+require 'coveralls/rake/task'
+Coveralls::RakeTask.new
+
+namespace :test do
+  desc 'Test with coveralls'
+  task :coveralls => ['test:rspec', 'test:cucumber', 'coveralls:push']
+end
