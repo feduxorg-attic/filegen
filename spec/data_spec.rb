@@ -1,5 +1,5 @@
-# ENCODING: UTF-8
-require 'spec_helper' 
+# encoding: utf-8
+require 'spec_helper'
 
 describe Filegen::Data do
   context '#instance_binding' do
@@ -8,7 +8,9 @@ describe Filegen::Data do
       expect(source).to receive(:fetch).with('MY_NAME').and_return('Karl')
 
       data = Filegen::Data.new(source)
+      # rubocop:disable Eval
       result = eval('lookup("MY_NAME")', data.instance_binding)
+      # rubocop:enable Eval
       expect(result).to eq('Karl')
     end
   end

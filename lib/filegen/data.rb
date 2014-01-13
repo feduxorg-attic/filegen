@@ -3,7 +3,6 @@
 module Filegen
   # This class is used as context for the erb-template
   class Data
-
     private
 
     attr_reader :data_sources
@@ -40,7 +39,7 @@ module Filegen
       result = nil
 
       data_sources.each do |s|
-        (result = s.fetch(variable) ) && (return result)
+        (result = s.fetch(variable)) && (return result)
       end
 
       ''

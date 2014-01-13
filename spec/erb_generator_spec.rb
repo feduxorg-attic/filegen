@@ -29,4 +29,3 @@ describe ErbGenerator do
     end
   end
 end
-

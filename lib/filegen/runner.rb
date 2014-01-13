@@ -19,7 +19,7 @@ module Filegen
     #  Stderr
     # @param [Kernel] kernel
     #  Kernel class
-    def initialize(argv, stdin=$stdin, stdout=$stdout, stderr=$stderr, kernel=Kernel)
+    def initialize(argv, stdin = $stdin, stdout = $stdout, stderr = $stderr, kernel = Kernel)
       $stdin, $stdout, $stderr, @kernel = stdin, stdout, stderr, kernel
 
       @options   = Options.new(argv)

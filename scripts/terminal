@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 require 'tmrb'
 
 tmux = TmRb::Multiplexer.new
-#creates an empty window
-tmux.new_session(session_name: "filegen")
+# creates an empty window
+tmux.new_session(session_name: 'filegen')
 
 tmux.new_window(name: 'code', command: 'vim -c :NERDTree lib')
 tmux.new_window(name: 'spec', command: 'vim -c :NERDTree spec')

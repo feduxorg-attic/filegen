@@ -11,8 +11,8 @@ module Filegen
 
       # Create data source
       def initialize
-        @source = Moneta.build do 
-          use :Transformer, :key => :to_s, :value => []
+        @source = Moneta.build do
+          use :Transformer, key: :to_s, value: []
           adapter :Memory, backend: ENV
         end
       end

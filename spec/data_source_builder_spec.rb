@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe DataSourceBuilder do
@@ -8,7 +9,7 @@ describe DataSourceBuilder do
 
       params = double('params')
       allow(params).to receive(:data_sources).and_return([:yaml, :env])
-      allow(params).to receive(:data_source_builders).and_return({yaml: yaml_builder, env: env_builder})
+      allow(params).to receive(:data_source_builders).and_return(yaml: yaml_builder, env: env_builder)
       allow(params).to receive(:yaml_file).and_return('')
 
       expect { DataSourceBuilder.new(params) }.not_to raise_error
@@ -29,7 +30,7 @@ describe DataSourceBuilder do
 
       params = double('params')
       allow(params).to receive(:data_sources).and_return([:env, :yaml])
-      allow(params).to receive(:data_source_builders).and_return({yaml: yaml_builder, env: env_builder})
+      allow(params).to receive(:data_source_builders).and_return(yaml: yaml_builder, env: env_builder)
       allow(params).to receive(:yaml_file).and_return('')
 
       builder = DataSourceBuilder.new(params)
@@ -42,7 +43,7 @@ describe DataSourceBuilder do
 
       params = double('params')
       allow(params).to receive(:data_sources).and_return([:yaml, :env])
-      allow(params).to receive(:data_source_builders).and_return({yaml: yaml_builder, env: env_builder})
+      allow(params).to receive(:data_source_builders).and_return(yaml: yaml_builder, env: env_builder)
       allow(params).to receive(:yaml_file).and_return('')
 
       builder = DataSourceBuilder.new(params)

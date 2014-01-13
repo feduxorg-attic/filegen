@@ -2,7 +2,6 @@
 module Filegen
   # Commandline parser
   class Options
-
     private
 
     attr_reader :params
@@ -36,7 +35,7 @@ module Filegen
     end
 
     # The data sources which can be used
-    # 
+    #
     # @return [Array]
     #   An array of data sources which can be used
     def data_sources
@@ -47,19 +46,19 @@ module Filegen
 
     def parse_options(argv)
       params = OpenStruct.new
-      parser = OptionParser.new 
+      parser = OptionParser.new
 
       params.data_sources = [:env]
       params.data_source_builders = {}
       params.data_source_builders[:env]  = DataSources::Environment.new
 
       parser.on('-y', '--yaml-file FILE', 'YAML-file to look for variables') do |f|
-        params.yaml_file = f 
+        params.yaml_file = f
         params.data_sources << :yaml
         params.data_source_builders[:yaml] = DataSources::Yaml.new(params.yaml_file)
       end
 
-      parser.on('-d', '--data-sources a,b', Array,  'Order for variable lookup: yaml, env (default: env or env,yaml if yaml-file-option is given)') do |l| 
+      parser.on('-d', '--data-sources a,b', Array,  'Order for variable lookup: yaml, env (default: env or env,yaml if yaml-file-option is given)') do |l|
         params.data_sources = l.map(&:to_sym)
       end
 
@@ -88,7 +87,9 @@ module Filegen
     end
 
     def erb_template?
+      # rubocop:disable CaseEquality
       /.erb$/ === File.basename(params.template)
+      # rubocop:enable CaseEquality
     end
   end
 end

@@ -1,1 +1,10 @@
-inherit_from: rubocop-todo.yml
+inherit_from: 
+  - config/rubocop-enabled.yml
+  - config/rubocop-disabled.yml
+
+AllCops:
+  Includes:
+    - '**/*.gemspec'
+    - '**/Rakefile'
+  Excludes:
+    - vendor/**

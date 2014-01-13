@@ -1,0 +1,140 @@
+AccessModifierIndentation:
+  Enabled: true
+
+Alias:
+  Enabled: true
+
+AlignParameters:
+  Enabled: true
+
+Blocks:
+  Enabled: true
+
+BracesAroundHashParameters:
+  Enabled: true
+
+CharacterLiteral:
+  Enabled: true
+
+ClassVars:
+  Enabled: true
+
+CollectionMethods:
+  Enabled: true
+
+ColonMethodCall:
+  Enabled: true
+
+Documentation:
+  Enabled: true
+
+EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+CaseEquality:
+  Enabled: true
+
+EmptyLinesAroundBody:
+  Enabled: true
+
+Encoding:
+  Enabled: true
+
+Eval:
+  Enabled: true
+
+FinalNewline:
+  Enabled: true
+
+HashSyntax:
+  Enabled: true
+
+IfUnlessModifier:
+  Enabled: true
+
+IndentationWidth:
+  Enabled: true
+
+Lambda:
+  Enabled: true
+
+LeadingCommentSpace:
+  Enabled: true
+
+LineLength:
+  Max: 188
+
+MethodLength:
+  Max: 23
+
+ParenthesesAroundCondition:
+  Enabled: true
+
+PerlBackrefs:
+  Enabled: true
+
+RaiseArgs:
+  Enabled: true
+
+RedundantSelf:
+  Enabled: true
+
+RegexpLiteral:
+  Enabled: true
+
+Semicolon:
+  Enabled: true
+
+SignalException:
+  Enabled: true
+
+SingleLineBlockParams:
+  Enabled: true
+
+SpaceAfterComma:
+  Enabled: true
+
+SpaceAfterControlKeyword:
+  Enabled: true
+
+SpaceAfterNot:
+  Enabled: true
+
+SpaceAroundBlockBraces:
+  Enabled: true
+
+SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+
+SpaceAroundOperators:
+  Enabled: true
+
+SpaceInsideBrackets:
+  Enabled: true
+
+SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+SpaceInsideParens:
+  Enabled: true
+
+SpecialGlobalVars:
+  Enabled: true
+
+StringLiterals:
+  Enabled: true
+
+TrailingBlankLines:
+  Enabled: true
+
+TrailingWhitespace:
+  Enabled: true
+
+TrivialAccessors:
+  Enabled: true
+
+UselessAssignment:
+  Enabled: true
+
+WordArray:
+  Enabled: true

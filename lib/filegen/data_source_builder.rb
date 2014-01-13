@@ -2,7 +2,6 @@
 module Filegen
   # Build data sources
   class DataSourceBuilder
-
     private
 
     attr_reader :params

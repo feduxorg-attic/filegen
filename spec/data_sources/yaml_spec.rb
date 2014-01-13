@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper' 
+require 'spec_helper'
 
 describe DataSources::Yaml do
   context '#fetch' do
@@ -29,4 +29,3 @@ describe DataSources::Yaml do
     end
   end
 end
-

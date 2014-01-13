@@ -2,7 +2,6 @@
 module Filegen
   # Used to generate the template
   class ErbGenerator
-
     private
 
     attr_reader :data

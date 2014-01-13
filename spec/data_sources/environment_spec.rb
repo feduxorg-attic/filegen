@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper' 
+require 'spec_helper'
 
 describe DataSources::Environment do
   context '#fetch' do
@@ -18,4 +18,3 @@ describe DataSources::Environment do
     end
   end
 end
-
