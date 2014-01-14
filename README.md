@@ -32,24 +32,29 @@ available on the commandline.
 Please make sure you have an ERB-template available. It needs to end with
 `.erb`! Place in anywhere you like. It's important that the name of variable in
 the template matches the name of environment variable or yaml-key: wording,
-case. The lookup is case-sensitive. If you want to get access to the variable,
-you need to use the `lookup`-method. It also provides a default value if the
-variable looked up is undefined.
+case. The lookup is case-sensitive. If you want to write the output to a file
+you need to redirect stdout with `>`. Otherwise it will output the content on
+`$stdout`.
+
+### Variable lookup
+
+If you want to get access to the variable, you need to use the `lookup`-method.
 
 ```ruby
 # look up variable
 lookup(<variable>)
+```
 
+The `lookup`-method will return an empty string '' if a variable cannot be
+looked up. If a default value is given it will return the default value instead
+of the empty string.
+
+```ruby
 # look up variable and use default value if variable is undefined
 lookup(<variable>, <default_value>)
 ```
 
-If you want to write the output to a file you need
-to redirect stdout with `>`. Otherwise it will output the content on `$stdout`.
-
-### Variable lookup
-
-The default order of data sources to lookup a variable,  is: 1st environment
+The default order of data sources to lookup a variable, is: 1st environment
 variable and 2nd yaml file. The yaml file needs be given as command line argument
 see below at [Generate a file based on YAML file](#yaml).
 
@@ -68,7 +73,6 @@ commandline
 ```
 --data-sources yaml
 ```
-
 
 ### Generate a file based on Environment Variables
 
