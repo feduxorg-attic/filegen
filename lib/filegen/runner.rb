@@ -4,7 +4,7 @@ module Filegen
   class Runner
     private
 
-    attr_reader :options, :generator
+    attr_reader :argv
 
     public
 
@@ -20,19 +20,20 @@ module Filegen
     # @param [Kernel] kernel
     #  Kernel class
     def initialize(argv, stdin = $stdin, stdout = $stdout, stderr = $stderr, kernel = Kernel)
-      $stdin, $stdout, $stderr, @kernel = stdin, stdout, stderr, kernel
-
-      @options   = Options.new(argv)
-      @generator = ErbGenerator.new(Data.new(@options.data_sources))
+      @argv, $stdin, $stdout, $stderr, @kernel = argv, stdin, stdout, stderr, kernel
     end
 
     # Execute runner
     def execute!
       begin
+        options   = Options.new(argv)
+
+        generator = ErbGenerator.new(Data.new(@options.data_sources))
         generator.compile(options.source, options.destination)
+
         exitstatus = 0
       rescue RuntimeError => e
-        $stderr.puts e.message
+        Filegen::Ui.error e.message
         exitstatus = 1
       end
 

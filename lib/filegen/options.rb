@@ -14,6 +14,8 @@ module Filegen
     #   The array which contains the commandline arguments
     def initialize(argv)
       @params = parse_options(argv)
+
+      validate_params
     end
 
     # Source template
@@ -21,8 +23,6 @@ module Filegen
     # @return [File]
     #   Returns a file handle for the template
     def source
-      validate_source
-
       File.new(params.template)
     end
 
@@ -44,9 +44,19 @@ module Filegen
 
     private
 
+    def validate_params
+      validate_source
+    end
+
+    # rubocop:disable MethodLength
     def parse_options(argv)
       params = OpenStruct.new
       parser = OptionParser.new
+
+      parser.banner = 'Usage: filegen [options] <template>'
+
+      parser.separator ''
+      parser.separator 'Specific options:'
 
       params.data_sources = [:env]
       params.data_source_builders = {}
@@ -62,6 +72,9 @@ module Filegen
         params.data_sources = l.map(&:to_sym)
       end
 
+      parser.separator ''
+      parser.separator 'Common options:'
+
       parser.on_tail('-h', '--help', 'Show this message') do
         $stderr.puts parser
         exit
@@ -76,10 +89,16 @@ module Filegen
 
       params
     end
+    # rubocop:enable MethodLength
 
     def validate_source
+      fail 'Template file name is missing.' if empty?
       fail "File \"#{params.template}\" does not exist" unless exists?
       fail "File \"#{params.template}\" is not a valid erb template: file ending erb" unless erb_template?
+    end
+
+    def empty?
+      params.template.nil?
     end
 
     def exists?

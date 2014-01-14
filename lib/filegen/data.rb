@@ -23,7 +23,7 @@ module Filegen
     #   The variable to lookup
     # @return [String]
     #   The value of the variable
-    def lookup(variable, default_value='')
+    def lookup(variable, default_value = '')
       try_to_fetch_unless_found_or_end(variable) || default_value
     end
 

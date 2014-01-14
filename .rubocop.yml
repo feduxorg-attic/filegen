@@ -8,3 +8,4 @@ AllCops:
     - '**/Rakefile'
   Excludes:
     - vendor/**
+    - lib/filegen/version.rb
