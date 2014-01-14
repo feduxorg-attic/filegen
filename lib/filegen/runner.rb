@@ -20,7 +20,7 @@ module Filegen
     # @param [Kernel] kernel
     #  Kernel class
     def initialize(argv, stdin = $stdin, stdout = $stdout, stderr = $stderr, kernel = Kernel)
-      @argv, $stdin, $stdout, $stderr, @kernel = argv, stdin, stdout, stderr, kernel
+      @argv, $stdin, $stdout, Ui.logger, @kernel = argv, stdin, stdout, stderr, kernel
     end
 
     # Execute runner
@@ -28,7 +28,7 @@ module Filegen
       begin
         options   = Options.new(argv)
 
-        generator = ErbGenerator.new(Data.new(@options.data_sources))
+        generator = ErbGenerator.new(Data.new(options.data_sources))
         generator.compile(options.source, options.destination)
 
         exitstatus = 0

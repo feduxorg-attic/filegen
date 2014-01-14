@@ -3,26 +3,35 @@ module Filegen
   # Methods for ui
   module Ui
     @logger = ::Logger.new($stderr)
-    @logger.formatter = proc { |severity, datetime, _, msg|
-      sprintf("%s %s: %s\n", datetime, severity, msg)
-    }
 
     class << self
       attr_reader :logger
 
+      def formated_logger
+        logger.formatter = proc { |severity, datetime, _, msg|
+          sprintf("%s %s: %s\n", datetime, severity, msg)
+        }
+
+        logger
+      end
+
+      def logger=(output = $stderr)
+        @logger = ::Logger.new(output)
+      end
+
       # Output warnings
       def warning(*args)
-        logger.warn(*args)
+        formated_logger.warn(*args)
       end
 
       # Output messages
       def message(*args)
-        logger.info(*args)
+        formated_logger.info(*args)
       end
 
       # Output errors
       def error(*args)
-        logger.error(*args)
+        formated_logger.error(*args)
       end
     end
   end

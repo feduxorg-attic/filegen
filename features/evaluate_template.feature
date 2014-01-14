@@ -29,21 +29,6 @@ Feature: Evaluate Template
     Hello Karl
     """
 
-  Scenario: Non existing file
-    When I run `filegen template1.erb`
-    Then the stderr should contain:
-    """
-    File "template1.erb" does not exist
-    """
-
-  Scenario: Non erb file
-    Given an empty file named "template1.abc"
-    When I run `filegen template1.abc`
-    Then the stderr should contain:
-    """
-    File "template1.abc" is not a valid erb template: file ending erb
-    """
-
   Scenario: YAML file as input (short)
     Given a file named "template.erb" with:
     """
