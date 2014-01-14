@@ -56,5 +56,14 @@ describe Filegen::Data do
       data = Filegen::Data.new([source1, source2])
       expect(data.lookup('MY_NAME')).to eq('')
     end
+
+    it 'let you return a default value' do
+      source1 = double('DataSource1')
+      expect(source1).to receive(:fetch).with('MY_NAME').and_return(nil)
+
+      data = Filegen::Data.new(source1)
+      expect(data.lookup('MY_NAME', 'abcde')).to eq('abcde')
+
+    end
   end
 end
