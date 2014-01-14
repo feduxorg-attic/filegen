@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/dg-vrnetze/filegen.png?branch=master)](https://travis-ci.org/dg-vrnetze/filegen)
 [![Code Climate](https://codeclimate.com/github/dg-vrnetze/filegen.png)](https://codeclimate.com/github/dg-vrnetze/filegen)
 [![Coverage Status](https://coveralls.io/repos/dg-vrnetze/filegen/badge.png?branch=master)](https://coveralls.io/r/dg-vrnetze/filegen?branch=master)
+[![Gem Version](https://badge.fury.io/rb/filegen.png)](http://badge.fury.io/rb/filegen)
 
 Have you ever felt the need to generate files based on environment variables or
 yaml files? If your answer is yes, then `filegen` can be quite helpful for
