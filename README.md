@@ -33,10 +33,15 @@ Please make sure you have an ERB-template available. It needs to end with
 `.erb`! Place in anywhere you like. It's important that the name of variable in
 the template matches the name of environment variable or yaml-key: wording,
 case. The lookup is case-sensitive. If you want to get access to the variable,
-you need to use the `lookup`-method.
+you need to use the `lookup`-method. It also provides a default value if the
+variable looked up is undefined.
 
-```
+```ruby
+# look up variable
 lookup(<variable>)
+
+# look up variable and use default value if variable is undefined
+lookup(<variable>, <default_value>)
 ```
 
 If you want to write the output to a file you need
@@ -63,8 +68,6 @@ commandline
 ```
 --data-sources yaml
 ```
-
-
 
 
 ### Generate a file based on Environment Variables
