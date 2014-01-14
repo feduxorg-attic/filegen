@@ -21,7 +21,7 @@ describe DataSourceBuilder do
       allow(params).to receive(:data_source_builders).and_return({})
       allow(params).to receive(:yaml_file).and_return('')
 
-      expect { DataSourceBuilder.new(params) }.to raise_error Exceptions::InvalidDataSources
+      expect { DataSourceBuilder.new(params) }.to raise_error Exceptions::DataSourcesAreInvalid
     end
 
     it 'supports order of data sources: env first' do

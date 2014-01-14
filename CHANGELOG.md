@@ -1,3 +1,8 @@
+0.2.2: 2014-01-14
+  * Better error messages if template file name is missing
+  * Refactoring of ui messages
+  * Cleaning up rubocop offences
+
 0.2.1: 2014-01-14
   * Add documentation for default value support
 

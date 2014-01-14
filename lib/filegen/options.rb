@@ -92,9 +92,9 @@ module Filegen
     # rubocop:enable MethodLength
 
     def validate_source
-      fail 'Template file name is missing.' if empty?
-      fail "File \"#{params.template}\" does not exist" unless exists?
-      fail "File \"#{params.template}\" is not a valid erb template: file ending erb" unless erb_template?
+      fail Exceptions::TemplateNameIsMissing, 'Template file name is missing.' if empty?
+      fail Exceptions::TemplateDoesNotExist, "File \"#{params.template}\" does not exist" unless exists?
+      fail Exceptions::TemplateNameIsInvalid, "File \"#{params.template}\" is not a valid erb template: file ending erb" unless erb_template?
     end
 
     def empty?

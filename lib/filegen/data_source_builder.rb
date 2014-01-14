@@ -43,7 +43,7 @@ module Filegen
 
     def validate_data_sources
       invalid_data_sources = chosen_data_sources - allowed_data_sources
-      fail Exceptions::InvalidDataSources, "Unknown data source#{invalid_data_sources.size > 1 ? 's' : ''} \"#{invalid_data_sources.join(', ')}\" found." unless invalid_data_sources.empty?
+      fail Exceptions::DataSourcesAreInvalid, "Unknown data source#{invalid_data_sources.size > 1 ? 's' : ''} \"#{invalid_data_sources.join(', ')}\" found." unless invalid_data_sources.empty?
     end
   end
 end

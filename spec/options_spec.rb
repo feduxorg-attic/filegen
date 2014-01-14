@@ -4,7 +4,8 @@ require 'spec_helper'
 describe Options do
   context '#destination' do
     it 'returns an io handle' do
-      options = Options.new([])
+      template_file = create_file('template.erb')
+      options = Options.new([template_file])
       expect(options.destination).to respond_to(:puts)
     end
   end
@@ -18,15 +19,12 @@ describe Options do
     end
 
     it 'raises an exception if file does not exist' do
-      options = Options.new(['template_file'])
-      expect { options.source }.to raise_error RuntimeError
+      expect { Options.new(['template_file']) }.to raise_error Exceptions::TemplateDoesNotExist
     end
 
     it 'raises an exception if file does not have a erb-extension' do
       template_file = create_file('template')
-
-      options = Options.new([template_file])
-      expect { options.source }.to raise_error RuntimeError
+      expect { Options.new([template_file]) }.to raise_error Exceptions::TemplateNameIsInvalid
     end
   end
 end
