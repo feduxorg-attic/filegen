@@ -50,10 +50,7 @@ describe Filegen::Data do
       source1 = double('DataSource1')
       expect(source1).to receive(:fetch).with('MY_NAME').and_return(nil)
 
-      source2 = double('DataSource2')
-      expect(source2).to receive(:fetch).with('MY_NAME').and_return(nil)
-
-      data = Filegen::Data.new([source1, source2])
+      data = Filegen::Data.new(source1)
       expect(data.lookup('MY_NAME')).to eq('')
     end
 
