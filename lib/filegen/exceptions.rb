@@ -13,5 +13,8 @@ module Filegen
 
     # raised if one uses an invalid template name (missing erb)
     class TemplateNameIsInvalid < RuntimeError; end
+
+    # raised if a given erb template has syntax errors in it
+    class ErbTemplateHasSyntaxErrors < Exception; end
   end
 end

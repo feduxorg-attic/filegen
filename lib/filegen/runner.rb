@@ -35,9 +35,12 @@ module Filegen
       rescue RuntimeError => e
         Filegen::Ui.error e.message
         exitstatus = 1
-      rescue Interrupt => e
+      rescue Interrupt
         Filegen::Ui.warning 'You told me to stop command execution.'
         exitstatus = 2
+      rescue Exceptions::ErbTemplateHasSyntaxErrors => e
+        Filegen::Ui.error "Syntax error in ERB-Template: \n" + e.message
+        exitstatus = 3
       end
 
       @kernel.exit(exitstatus)

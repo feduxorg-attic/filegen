@@ -24,7 +24,11 @@ module Filegen
     #   The output io handle
     def compile(source, destination)
       erb = ERB.new(source.read, nil, '-')
-      destination.puts erb.result(data.instance_binding)
+      begin
+        destination.puts erb.result(data.instance_binding)
+      rescue SyntaxError => e
+        raise Exceptions::ErbTemplateHasSyntaxErrors, e.message
+      end
     end
   end
 end
