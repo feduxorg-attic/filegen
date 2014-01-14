@@ -35,6 +35,9 @@ module Filegen
       rescue RuntimeError => e
         Filegen::Ui.error e.message
         exitstatus = 1
+      rescue Interrupt => e
+        Filegen::Ui.warning 'You told me to stop command execution.'
+        exitstatus = 2
       end
 
       @kernel.exit(exitstatus)
