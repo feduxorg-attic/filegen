@@ -1,4 +1,9 @@
-0.2.4: 2014-01-14
+0.3.1: 2014-01-14
+  * Add handling of erb syntax errors
+  * Improved documentation: gem badge
+  * Fix rubocop offence
+
+0.3.0: 2014-01-14
   * Activate erb trim mode (see http://ruby-doc.org/stdlib-2.0.0/libdoc/erb/rdoc/ERB.html : new)
 
 0.2.3: 2014-01-14
