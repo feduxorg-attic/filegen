@@ -23,7 +23,7 @@ module Filegen
     # @param [IO] destination
     #   The output io handle
     def compile(source, destination)
-      erb = ERB.new(source.read)
+      erb = ERB.new(source.read, nil, '-')
       destination.puts erb.result(data.instance_binding)
     end
   end
