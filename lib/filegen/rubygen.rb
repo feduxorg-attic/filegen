@@ -19,8 +19,6 @@ module Filegen
         generator.compile(source, result)
       rescue RuntimeError => e
         Filegen::Ui.error e.message
-      rescue Interrupt
-        Filegen::Ui.warning 'You told me to stop command execution.'
       rescue Exceptions::ErbTemplateHasSyntaxErrors => e
         Filegen::Ui.error "Syntax error in ERB-Template: \n" + e.message
       end
