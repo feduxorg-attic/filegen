@@ -1,7 +1,9 @@
 #!/usr/bin/env rake
 
-require 'fedux_org/stdlib/rake'
+require 'bundler'
+Bundler.require :default, :test, :development
 
+require 'fedux_org/stdlib/rake'
 require 'filegen/version'
 
 def software
