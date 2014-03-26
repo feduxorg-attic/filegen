@@ -1,10 +1,11 @@
 # encoding: utf-8
 require 'erb'
-require 'moneta'
 require 'optparse'
 require 'forwardable'
 require 'ostruct'
 require 'logger'
+require 'active_support/hash_with_indifferent_access'
+require 'stringio'
 
 require 'filegen/version'
 require 'filegen/ui'
@@ -15,6 +16,7 @@ require 'filegen/erb_generator'
 require 'filegen/data_source_builder'
 require 'filegen/data_sources/environment'
 require 'filegen/data_sources/yaml'
+require 'filegen/rubygen'
 require 'filegen/exceptions'
 
 # Main class

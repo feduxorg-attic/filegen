@@ -162,8 +162,7 @@ chmod +x <wrapper>
 
 ## Future
 
-* Maybe I will add additional data sources. Please see the
-  [Moneta](https://github.com/minad/moneta)-gem for possible candidates.
+* Maybe I will add additional data sources.
 
 ## Contributing
 

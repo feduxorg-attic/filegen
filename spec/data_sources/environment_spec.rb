@@ -3,10 +3,17 @@ require 'spec_helper'
 
 describe DataSources::Environment do
   context '#fetch' do
-    it 'retrieves environment variables' do
+    it 'retrieves environment variables as string' do
       in_environment 'MY_NAME' => 'Karl' do
         source = DataSources::Environment.new
         expect(source.fetch('MY_NAME')).to eq('Karl')
+      end
+    end
+
+    it 'retrieves environment variables as symbol' do
+      in_environment 'MY_NAME' => 'Karl' do
+        source = DataSources::Environment.new
+        expect(source.fetch(:MY_NAME)).to eq('Karl')
       end
     end
 

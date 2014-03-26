@@ -13,6 +13,16 @@ describe DataSources::Yaml do
       expect(source.fetch('MY_NAME')).to eq('Karl')
     end
 
+    it 'retrieves symbol variables from yaml file' do
+      file = create_file('blub.yaml', <<-EOF.strip_heredoc
+                         ---
+                         :MY_NAME: Karl
+                         EOF
+                        )
+      source = DataSources::Yaml.new(file)
+      expect(source.fetch('MY_NAME')).to eq('Karl')
+    end
+
     it 'returns nil if variable cannot be found' do
       file = create_file('blub.yaml', <<-EOF.strip_heredoc
                          ---

@@ -3,18 +3,20 @@ module Filegen
   module DataSources
     # Data source which makes environment variables available
     class Environment
-      extend Forwardable
 
-      # @!method fetch(key, default_value=nil)
-      #    Fetch value for key from data source
-      def_delegator :@source, :fetch, :fetch
+      private
+
+      attr_reader :source
+
+      public
 
       # Create data source
       def initialize
-        @source = Moneta.build do
-          use :Transformer, key: :to_s, value: []
-          adapter :Memory, backend: ENV
-        end
+        @source = HashWithIndifferentAccess.new(ENV.to_hash)
+      end
+
+      def fetch(key, default_value = nil)
+        source[key.to_sym] || source[key.to_s] || default_value
       end
     end
   end
