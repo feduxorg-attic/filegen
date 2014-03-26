@@ -26,7 +26,7 @@ Or install it yourself as:
 This gem ships with an executable called `filegen`. It makes the power of ERB
 available on the commandline.
 
-## Usage
+## Usage on Commandline
 
 ### General advice
 
@@ -125,6 +125,48 @@ And get the following result.
 
 ```text
 Hello my name is: Karl
+```
+
+## Usage within ruby
+
+### Hash with Symbol-Keys
+
+```ruby
+require 'filegen'
+require 'stringio'
+
+template = <<-EOS
+Hi <%= lookup('name') %>
+EOS
+
+data = {
+  name: 'Karl'
+}
+
+generator = Filegen::Rubygen.new
+puts generator.run(template, data)
+
+# => Hi Karl
+```
+
+### Hash with String-Keys
+
+```ruby
+require 'filegen'
+require 'stringio'
+
+template = <<-EOS
+Hi <%= lookup('name') %>
+EOS
+
+data = {
+  'name' => 'Karl'
+}
+
+generator = Filegen::Rubygen.new
+puts generator.run(template, data)
+
+# => Hi Karl
 ```
 
 ## Use Cases
