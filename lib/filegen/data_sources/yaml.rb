@@ -1,9 +1,9 @@
 # encoding: utf-8
 module Filegen
+  # Data Sources
   module DataSources
     # Data source which makes yaml files available
     class Yaml
-
       private
 
       attr_reader :source

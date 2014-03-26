@@ -9,7 +9,7 @@ module Filegen
 
       def formated_logger
         logger.formatter = proc { |severity, datetime, _, msg|
-          sprintf("%s %s: %s\n", datetime, severity, msg)
+          format("%s %s: %s\n", datetime, severity, msg)
         }
 
         logger

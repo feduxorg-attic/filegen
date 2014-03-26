@@ -1,9 +1,9 @@
 # encoding: utf-8
 module Filegen
+  # Data Sources
   module DataSources
     # Data source which makes environment variables available
     class Environment
-
       private
 
       attr_reader :source

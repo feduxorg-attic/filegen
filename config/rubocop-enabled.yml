@@ -100,8 +100,8 @@ SpaceAfterControlKeyword:
 SpaceAfterNot:
   Enabled: true
 
-SpaceAroundBlockBraces:
-  Enabled: true
+#SpaceAroundBlockBraces:
+#  Enabled: true
 
 SpaceAroundEqualsInParameterDefault:
   Enabled: true

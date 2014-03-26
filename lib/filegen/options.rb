@@ -102,7 +102,7 @@ module Filegen
     end
 
     def exists?
-      File.exists?(params.template)
+      File.exist?(params.template)
     end
 
     def erb_template?

@@ -1,7 +1,15 @@
 # encoding: utf-8
 module Filegen
+  # Generator for ruby code
   class Rubygen
-
+    # Generate text
+    #
+    # @param [String] source
+    #   The template used
+    # @param [Hash] data
+    #   The data used within template evaluation
+    # @return [String]
+    #   The evaluated template
     def run(source, data)
       result = StringIO.new
       source = StringIO.new(source)
