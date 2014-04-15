@@ -16,8 +16,6 @@ module Filegen
       rescue SystemCallError => e
         # it's bad just silently ignore errors, so we don't
         fail SystemCallError, "File access error, #{e.message}"
-      else
-        raise
       end
 
       def fetch(key, default_value = nil)
