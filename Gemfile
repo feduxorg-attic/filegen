@@ -31,4 +31,5 @@ gem 'fedux_org-stdlib', group: [:development, :test]
 gem 'bundler', '~> 1.3', group: [:development, :test]
 gem 'erubis', group: [:development, :test]
 gem 'versionomy', group: [:development, :test]
-gem 'activesupport', group: [:development, :test]
+gem 'activesupport'
+gem 'psych'
