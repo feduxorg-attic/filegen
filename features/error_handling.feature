@@ -26,7 +26,6 @@ Feature: Error handling
     File "template1.abc" is not a valid erb template: file ending erb
     """
 
-    @wip
   Scenario: Non existing YAML-file
     Given a file named "template.erb" with:
     """
