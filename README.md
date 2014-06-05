@@ -208,4 +208,4 @@ chmod +x <wrapper>
 
 ## Contributing
 
-Please have a look at the {file:README.DEVELOPER.md developer readme}
+Please have a look at the {file:CONTRIBUTING.md contribution guide}
