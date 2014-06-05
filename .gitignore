@@ -1,3 +1,5 @@
+*.xz
+*.gz
 *.gem
 *.rbc
 .bundle
