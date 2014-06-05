@@ -14,11 +14,18 @@ group :test do
 end
 
 group :development do
-  gem 'debugger'
   gem 'awesome_print'
-  gem 'debugger-completion'
   gem 'pry'
-  gem 'pry-debugger'
+
+  if RUBY_VERSION < '2.0.0'
+    gem 'pry-debugger'
+    gem 'debugger'
+    gem 'debugger-completion'
+  else
+    gem 'pry-byebug'
+    gem 'byebug'
+  end
+
   gem 'pry-doc'
   gem 'tmrb'
   gem 'yard'
