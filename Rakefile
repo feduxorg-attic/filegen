@@ -1,5 +1,7 @@
 #!/usr/bin/env rake
 
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+
 #require 'bundler'
 #Bundler.require :default, :test, :development
 
