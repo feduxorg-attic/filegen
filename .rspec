@@ -1,3 +1,4 @@
+--require rspec/legacy_formatters
 --format Fuubar
 --order rand
 --color
