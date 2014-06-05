@@ -6,6 +6,8 @@ require 'ostruct'
 require 'logger'
 require 'active_support/hash_with_indifferent_access'
 require 'stringio'
+require 'json'
+require 'psych'
 
 require 'filegen/version'
 require 'filegen/ui'

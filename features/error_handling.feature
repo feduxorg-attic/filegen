@@ -26,3 +26,14 @@ Feature: Error handling
     File "template1.abc" is not a valid erb template: file ending erb
     """
 
+    @wip
+  Scenario: Non existing YAML-file
+    Given a file named "template.erb" with:
+    """
+    Hello <%= lookup('name') %>!
+    """
+    When I run `filegen -y input.yaml template.erb`
+    Then the stderr should contain:
+    """
+    Yaml-file "input.yaml" not found
+    """

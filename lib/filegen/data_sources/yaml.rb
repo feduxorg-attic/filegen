@@ -13,8 +13,8 @@ module Filegen
       # Create data source
       def initialize(file)
         @source = HashWithIndifferentAccess.new(Psych.load_file(file))
-      rescue
-        @source = HashWithIndifferentAccess.new
+      rescue Errno::ENOENT
+        raise Exceptions::YamlFileNotFound, JSON.dump(file: file)
       end
 
       def fetch(key, default_value = nil)

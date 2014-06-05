@@ -16,5 +16,8 @@ module Filegen
 
     # raised if a given erb template has syntax errors in it
     class ErbTemplateHasSyntaxErrors < Exception; end
+
+    # raised if yaml file cannot be found
+    class YamlFileNotFound < Exception; end
   end
 end

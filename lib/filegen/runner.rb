@@ -32,15 +32,18 @@ module Filegen
         generator.compile(options.source, options.destination)
 
         exitstatus = 0
-      rescue RuntimeError => e
-        Filegen::Ui.error e.message
-        exitstatus = 1
       rescue Interrupt
         Filegen::Ui.warning 'You told me to stop command execution.'
         exitstatus = 2
       rescue Exceptions::ErbTemplateHasSyntaxErrors => e
         Filegen::Ui.error "Syntax error in ERB-Template: \n" + e.message
         exitstatus = 3
+      rescue Exceptions::YamlFileNotFound => e
+        Filegen::Ui.error "Yaml-file \"#{JSON.parse(e.message)['file']}\" not found."
+        exitstatus = 4
+      rescue StandardError => e
+        Filegen::Ui.error "#{e.class} - #{e.message}"
+        exitstatus = 99
       end
 
       @kernel.exit(exitstatus)
